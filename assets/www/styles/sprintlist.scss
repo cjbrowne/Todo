@@ -1,0 +1,79 @@
+@import "colorscheme.scss";
+.sprintlist {
+    display: block;
+    margin: auto;
+    width: 25vw;
+    .sprint {
+        h2 {
+            background-color: $sprint-header-background;
+            color: $sprint-header-foreground;
+            padding: 0.5em;
+            width: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+        }
+        .tasks {
+            .tasklist {
+                li {
+                    display: block;
+                    overflow:hidden;
+                }
+            }
+            .task-name-input {
+                padding: 0.5em;
+                margin: 0 auto;
+                display: block;
+                width:100%;
+                font-size: 18pt;
+                border:none;
+                background-color: $task-name-input-background-inactive;
+                color: $task-name-input-foreground-inactive;
+                &:active,
+                &:focus {
+                    background-color: $task-name-input-background-active;
+                    color: $task-name-input-foreground-active;
+                }
+            }
+            background-color: $sprint-background;
+            color: $sprint-foreground;
+            padding: 1em;
+            padding-bottom: 0.5em;
+            .addTask {
+                background-color: $add-task-background;
+                color: $add-task-foreground;
+                border: none;
+                display: block;
+                margin: 0 auto;
+                padding: 0.5em 1.5em;
+                font-size: 16pt;
+                outline:none;
+                &:hover,
+                &:active{
+                    text-shadow: 0px 0px 5px lighten($add-task-foreground, 50%);
+                    cursor: pointer;
+                }
+            }
+        }
+        text-align: left;
+        font-size: 18pt;
+        font-family: sans-serif;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        width:100%;
+        overflow:hidden;
+        white-space:no-wrap;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &.expanded {
+            h2 {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+}

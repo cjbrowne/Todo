@@ -1,0 +1,17 @@
+{
+    "title": {
+        "default": "Todo",
+        "sprintlist": "Todo Lists"
+    },
+    "sprintNames": {
+        "unprioritised": "Unprioritised",
+        "prioritised": "Prioritised",
+        "today": "Today",
+        "tomorrow": "Tomorrow",
+        "currentWeek": "This Week"
+    },
+    "task": {
+        "add": "Add Task",
+        "new": "New Task"
+    }
+}

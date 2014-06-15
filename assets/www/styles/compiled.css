@@ -1,0 +1,77 @@
+
+@import url(reset.css);
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #001; }
+
+.title {
+  margin: auto;
+  width: 12em;
+  text-align: center;
+  height: 1em;
+  padding-top: 3em;
+  font-size: 24pt;
+  font-family: sans-serif;
+  color: #FF9; }
+
+.sprintlist {
+  display: block;
+  margin: auto;
+  width: 25vw; }
+  .sprintlist .sprint {
+    text-align: left;
+    font-size: 18pt;
+    font-family: sans-serif;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    white-space: no-wrap; }
+    .sprintlist .sprint h2 {
+      background-color: #033;
+      color: #FFF;
+      padding: 0.5em;
+      width: 100%;
+      border-radius: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .sprintlist .sprint .tasks {
+      background-color: #699;
+      color: #FFF;
+      padding: 1em;
+      padding-bottom: 0.5em; }
+      .sprintlist .sprint .tasks .tasklist li {
+        display: block;
+        overflow: hidden; }
+      .sprintlist .sprint .tasks .task-name-input {
+        padding: 0.5em;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+        font-size: 18pt;
+        border: none;
+        background-color: #999;
+        color: #666; }
+        .sprintlist .sprint .tasks .task-name-input:active, .sprintlist .sprint .tasks .task-name-input:focus {
+          background-color: #FFF;
+          color: #000; }
+      .sprintlist .sprint .tasks .addTask {
+        background-color: #FFF;
+        color: #000;
+        border: none;
+        display: block;
+        margin: 0 auto;
+        padding: 0.5em 1.5em;
+        font-size: 16pt;
+        outline: none; }
+        .sprintlist .sprint .tasks .addTask:hover, .sprintlist .sprint .tasks .addTask:active {
+          text-shadow: 0px 0px 5px #808080;
+          cursor: pointer; }
+    .sprintlist .sprint:last-child {
+      margin-bottom: 0; }
+    .sprintlist .sprint:hover {
+      cursor: pointer; }
+    .sprintlist .sprint.expanded h2 {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0; }

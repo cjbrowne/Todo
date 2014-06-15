@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="styles/compiled.css">
+        <title>Todo</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <div class="templates">
+            <template class="title">
+                <h1 class="title">${title}</h1>
+            </template>
+            <template class="sprintlist">
+                <ul class="sprintlist"></ul>
+            </template>
+            <template class="sprint">
+                <li class="sprint">
+                    <h2>${sprintTitle}</h2>
+                    <div class='tasks'>
+                        <ul class='tasklist'>
+                        </ul>
+                        <button class='addTask'>
+                            ${addTask}
+                        </button>
+                    </div>
+                </li>
+            </template>
+            <template class="task">
+                <input type="text" class="task-name-input" value="${name}" />
+            </template>
+        </div>
+        <script type="text/javascript" src="/js/lib/promise.js"></script>
+        <script type="text/javascript" src="/js/lib/savannah.js"></script>
+        <script type="text/javascript" src="/js/lib/lodash.js"></script>
+        <script type="text/javascript" src="/js/lib/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="/js/lib/backbone.js"></script>
+        <script type="text/javascript" src="/js/lib/backbone.activities.js"></script>
+        <script type="text/javascript" src="/js/lib/backbone.localStorage.js"></script>
+        <script type="text/javascript">
+            // see: https://developer.mozilla.org/en-US/docs/Web/API/Window.location#Example_.236.3A_Get_the_value_of_a_single_window.location.search_key.3A
+            function loadPageVar (sVar) {
+                return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+            }
+            function addMainRequireScript (compiled) {
+                var tag = document.createElement('script');
+                tag.setAttribute('type', 'text/javascript');
+                tag.setAttribute('data-main', '/js/todo' + (compiled ? '-compiled' : ''));
+                tag.setAttribute('src', '/js/lib/require.js');
+                document.body.appendChild(tag);
+            }
+            $(function () {
+                    addMainRequireScript(loadPageVar('compiled'));
+            });
+        </script>
+    </body>
+</html>
