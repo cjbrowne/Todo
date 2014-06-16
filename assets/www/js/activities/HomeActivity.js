@@ -1,7 +1,9 @@
 define([
+    'models/TitleModel',
     'views/TitleView',
     'lib/i18n'
 ], function (
+    TitleModel,
     TitleView,
     i18n
 ) {
@@ -9,10 +11,11 @@ define([
         titleView: null,
         onStart: function (routeParams) {
             this.titleView = new TitleView({
-                el: _.template($('.templates template.title').html(), {
-                    title: i18n.t('title.default')
+                model: new TitleModel({
+                    title: i18n.t('title.home')
                 })
             });
+            $("#app").append(this.titleView.el);
         },
         onStop: function () {
             this.titleView.remove();

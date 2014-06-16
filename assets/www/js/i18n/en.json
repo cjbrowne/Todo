@@ -1,6 +1,7 @@
 {
     "title": {
-        "default": "Todo",
+        "home": "Todo",
+        "default": "$t(home)",
         "sprintlist": "Todo Lists"
     },
     "sprintNames": {
@@ -12,6 +13,7 @@
     },
     "task": {
         "add": "Add Task",
-        "new": "New Task"
+        "new": "New Task",
+        "done": "Done"
     }
 }

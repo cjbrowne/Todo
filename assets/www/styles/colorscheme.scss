@@ -4,9 +4,14 @@ $sprint-background:  #699;
 $sprint-foreground: #FFF;
 $sprint-header-background: #033;
 $sprint-header-foreground: #FFF;
-$add-task-background: #FFF;
-$add-task-foreground: #000;
+$task-button-background: #FFF;
+$task-button-foreground: #000;
+$add-task-background: $task-button-background;
+$add-task-foreground: $task-button-foreground;
+$task-done-background: $task-button-background;
+$task-done-foreground: $task-button-foreground;
 $task-name-input-background-active: #FFF;
 $task-name-input-background-inactive: #999;
 $task-name-input-foreground-active: #000;
 $task-name-input-foreground-inactive: #666;
+

@@ -13,24 +13,23 @@
                 <h1 class="title">${title}</h1>
             </template>
             <template class="sprintlist">
-                <ul class="sprintlist"></ul>
+                <li class='newTask'>
+                <button class='addTask'>${addTask}</button>
+                </li>
             </template>
             <template class="sprint">
-                <li class="sprint">
-                    <h2>${sprintTitle}</h2>
-                    <div class='tasks'>
-                        <ul class='tasklist'>
+            <h2>${sprintTitle}<span class='start-date'>${startDate}</span></h2>
+                    <div class="tasks">
+                        <ul class="tasklist">
                         </ul>
-                        <button class='addTask'>
-                            ${addTask}
-                        </button>
                     </div>
-                </li>
             </template>
             <template class="task">
                 <input type="text" class="task-name-input" value="${name}" />
+                <div class="taskDone"></div>
             </template>
         </div>
+        <script type="text/javascript" src="/js/lib/date.js"></script>
         <script type="text/javascript" src="/js/lib/promise.js"></script>
         <script type="text/javascript" src="/js/lib/savannah.js"></script>
         <script type="text/javascript" src="/js/lib/lodash.js"></script>

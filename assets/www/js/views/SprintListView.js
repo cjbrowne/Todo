@@ -10,37 +10,63 @@ define([
     i18n
 ) {
     var SprintListView = Backbone.View.extend({
+        tagName: 'ul',
         sprintViews: null,
         events: {
+            'click .addTask': 'onAddTaskClick'
         },
         initialize: function () {
             this.sprintViews = {};
+            this.collection.fetch();
             this.render();
         },
         render: function () {
-            $("#app").append(this.$el);
-            var createSprintView = _.bind(function (sprint) {
-                return new SprintView({
-                    el: _.template($('.templates .sprint').html(), {
-                        sprintTitle: i18n.t('sprintNames.' + sprint),
-                        addTask: i18n.t('task.add')
-                    }),
-                    model: new SprintModel({
-                        sprint: sprint
-                    }),
-                    collection: new TaskCollection()
-                });
+            var tmpl = $('.templates .sprintlist').html();
+            this.$el.html(_.template(tmpl, {
+                addTask: i18n.t('task.add')
+            }));
+            this.$el.addClass("sprintlist");
+            var createSprintView = _.bind(function (sprint, startTime) {
+                var sprintModel, sprintView, taskCollection;
+                sprintModel =
+                    (this.collection.findWhere({sprint: sprint})) ||
+                    new SprintModel({
+                        sprint: sprint,
+                        startTime: startTime
+                    });
+                taskCollection = new TaskCollection();
+                taskCollection.fetch();
+                if(taskCollection.length > 0) {
+                    sprintView = new SprintView({
+                        model: sprintModel,
+                        collection: taskCollection
+                    });
+                    this.$el.append(sprintView.el);
+                    this.sprintViews[sprint] = sprintView;
+                }
             }, this);
             _.each([
-                'unprioritised',
-                'prioritised',
                 'today',
                 'tomorrow',
                 'currentWeek'
             ], function (sprint) {
-                this.sprintViews[sprint] = createSprintView(sprint);
-                this.$el.append(this.sprintViews[sprint].el);
+                var startTime;
+                switch(sprint) {
+                    case 'today':
+                        startTime = Date.today().getTime();
+                        break;
+                    case 'tomorrow':
+                        startTime = Date.parse("tomorrow").getTime();
+                        break;
+                    case 'currentWeek':
+                        startTime = Number.POSITIVE_INFINITY;
+                        break;
+                }
+                createSprintView(sprint, startTime);
             }, this);
+        },
+        onAddTaskClick: function () {
+            Backbone.history.navigate('/task/new', {trigger: true});
         }
     });
     return SprintListView;

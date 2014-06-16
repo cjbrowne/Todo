@@ -5,7 +5,12 @@ define([
 ) {
     var SprintModel = Backbone.Model.extend({
         defaults: {
-            sprint: "unknown"
+            sprint: "unknown",
+            startTime: 0 // when the sprint is due to begin
+        },
+        localStorage: new Backbone.LocalStorage('sprint'),
+        initialize: function () {
+            this.save();
         }
     });
     return SprintModel;

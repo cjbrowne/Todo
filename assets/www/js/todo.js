@@ -40,8 +40,7 @@ require([
                 "": "home",
                 "home": "home",
                 "sprint": "sprintlist",
-                "sprint/:sprint": "sprint",
-                "sprint/:sprint/:task": "task"
+                "task(/new)": "task"
             }
         });
         router = new ApplicationRouter();

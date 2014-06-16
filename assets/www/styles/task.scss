@@ -1,0 +1,49 @@
+
+@import "colorscheme.scss";
+.tasklist {
+    li {
+        display: flex;
+        overflow:hidden;
+        font-size: 18pt;
+        height: 2em;
+    }
+}
+.task-name-input {
+    margin:0;
+    padding: 0.5em;
+    border:none;
+    background-color: $task-name-input-background-inactive;
+    color: $task-name-input-foreground-inactive;
+    font-size: inherit;
+    &:active,
+    &:focus {
+        background-color: $task-name-input-background-active;
+        color: $task-name-input-foreground-active;
+    }
+}
+.taskDone {
+    background-color: $task-done-background;
+    color: $task-done-foreground;
+    padding: 0.5em;
+    width: 2em;
+    text-align: center;
+    font-size: inherit;
+    &.selected {
+
+    }
+}
+.addTask {
+    background-color: $add-task-background;
+    color: $add-task-foreground;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    padding: 0.5em 1.5em;
+    font-size: 16pt;
+    outline:none;
+    &:hover,
+    &:active{
+        text-shadow: 0px 0px 5px lighten($add-task-foreground, 50%);
+        cursor: pointer;
+    }
+}
