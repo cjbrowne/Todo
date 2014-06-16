@@ -1,17 +1,33 @@
-
 @import "colorscheme.scss";
-.tasklist {
-    li {
-        display: flex;
-        overflow:hidden;
-        font-size: 18pt;
-        height: 2em;
-    }
+@import "layout-vars.scss";
+
+.new-task {
+    width: $app-inner-width;
+    margin: auto;
+    display: block;
+    overflow: hidden;
+    color: $edit-task-form-foreground;
+    background-color: $edit-task-form-background;
+}
+.tasklist li,
+.form-line {
+    padding: 0.5em;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    justify-content: flex-start;
+    font-size: 18pt;
+    height: 2em;
 }
 .task-name-input {
+    flex: 1 1 auto;
+    align-self: auto;
     margin:0;
     padding: 0.5em;
-    border:none;
+    border: none;
     background-color: $task-name-input-background-inactive;
     color: $task-name-input-foreground-inactive;
     font-size: inherit;
@@ -19,6 +35,8 @@
     &:focus {
         background-color: $task-name-input-background-active;
         color: $task-name-input-foreground-active;
+        border: none;
+        outline: none;
     }
 }
 .taskDone {
@@ -28,6 +46,9 @@
     width: 2em;
     text-align: center;
     font-size: inherit;
+    &:hover {
+        cursor: pointer;
+    }
     &.selected {
 
     }
@@ -46,4 +67,30 @@
         text-shadow: 0px 0px 5px lighten($add-task-foreground, 50%);
         cursor: pointer;
     }
+}
+label {
+    flex: 2 1 auto;
+    align-self: auto;
+    color: $task-label-foreground;
+    background-color: $task-label-background;
+    padding: 0.5em;
+    font-family: sans-serif;
+    font-size: inherit;
+}
+select.priority {
+    font-size: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+    option {
+        font-size: inherit;
+    }
+}
+.date-picker {
+    flex: 0 500 auto;
+    border: none;
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 12pt;
+    padding: 0.5em;
 }

@@ -2,24 +2,26 @@ define([
     'views/TitleView',
     'models/TitleModel',
     'views/AddTaskView',
-    'models/TaskModel',
+    'collections/TaskCollection',
     'lib/i18n'
 ], function (
     TitleView,
     TitleModel,
     AddTaskView,
-    TaskModel,
+    TaskCollection,
     i18n
 ) {
     var TaskActivity = Backbone.Activity.extend({
         onStart: function (routeParams) {
+            var taskCollection = new TaskCollection();
+            taskCollection.fetch();
             this.titleView = new TitleView({
                 model: new TitleModel({
                     title: i18n.t('task.add')
                 })
             });
             this.addTaskView = new AddTaskView({
-                model: new TaskModel()
+                collection: taskCollection
             });
             $("#app").append(this.titleView.el);
             $("#app").append(this.addTaskView.el);

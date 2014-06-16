@@ -14,6 +14,13 @@
     "task": {
         "add": "Add Task",
         "new": "New Task",
-        "done": "Done"
+        "done": "Done",
+        "priority": "Priority",
+        "startDate": "Start Date"
+    },
+    "priority": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
     }
 }

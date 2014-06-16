@@ -14,7 +14,7 @@
             </template>
             <template class="sprintlist">
                 <li class='newTask'>
-                <button class='addTask'>${addTask}</button>
+                    <button class='addTask'>${addTask}</button>
                 </li>
             </template>
             <template class="sprint">
@@ -27,6 +27,39 @@
             <template class="task">
                 <input type="text" class="task-name-input" value="${name}" />
                 <div class="taskDone"></div>
+            </template>
+            <template class="edit-task">
+                <div role="group" class="form-line">
+                    <input type="text" class="task-name-input" value="${name}" />
+                    <div class="taskDone"> </div>
+                </div>
+                <div role="group" class="form-line">
+                    <label for="priority" class="priority">
+                        ${priority.label}
+                    </label>
+                    <select class="priority">
+                        <option value="low">
+                            ${priority.low}
+                        </option>
+                        <option value="medium">
+                            ${priority.medium}
+                        </option>
+                        <option value="high">
+                            ${priority.high}
+                        </option>
+                    </select>
+                </div>
+                <div role="group" class="form-line">
+                    <label for="startDate" class="startdate-label">
+                        ${startDate.label}
+                    </label>
+                    <input type="date" class="date-picker" />
+                </div>
+                <div role="group" class="form-line">
+                    <button class="addTask">
+                        ${addTask}
+                    </button>
+                </div>
             </template>
         </div>
         <script type="text/javascript" src="/js/lib/date.js"></script>

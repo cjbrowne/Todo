@@ -15,7 +15,7 @@ define([
         },
         initialize: function () {
             this.taskViews = [];
-            this.collection.localStorage = new Backbone.LocalStorage('sprint.' + this.model.get('sprint'));
+            this.model.localStorage = new Backbone.LocalStorage('sprint.' + this.model.get('sprint'));
             this.collection.fetch();
             this.model.fetch();
             this.render();

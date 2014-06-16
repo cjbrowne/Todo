@@ -45,5 +45,8 @@ require([
         });
         router = new ApplicationRouter();
         Backbone.history.start({pushState: true});
+        if(window) {
+            window.i18n = i18n;
+        }
     });
 });

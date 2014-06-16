@@ -1,0 +1,25 @@
+{
+    "title": {
+        "home": "Todo",
+        "default": "$t(home)",
+        "sprintlist": "Todo Listar"
+    },
+    "sprintNames": {
+        "unprioritised": "Oprioritiserad",
+        "prioritised": "Prioritiserad",
+        "today": "Idag",
+        "tomorrow": "Imorgon",
+        "currentWeek": "Denna Vecka"
+    },
+    "task": {
+        "add": "Skapa Nytt",
+        "new": "Nytt Jobb",
+        "done": "Gjort",
+        "priority": "Prioritiet"
+    },
+    "priority": {
+        "low": "Låg",
+        "medium": "Medel",
+        "high": "Hög"
+    }
+}

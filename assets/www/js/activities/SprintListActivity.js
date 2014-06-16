@@ -14,7 +14,7 @@ define([
     var SprintListActivity = Backbone.Activity.extend({
         sprintListView: null,
         titleView: null,
-        onStart: function (routeParams) {
+        onCreate: function (routeParams) {
             this.titleView = new TitleView({
                 model: new TitleModel({
                     title: i18n.t('title.sprintlist')
@@ -23,6 +23,12 @@ define([
             this.sprintListView = new SprintListView({
                 collection: new SprintCollection()
             });
+            $("#app").append(this.titleView.el);
+            $("#app").append(this.sprintListView.el);
+        },
+        onStart: function (routeParams) {
+            this.titleView.render();
+            this.sprintListView.render();
             $("#app").append(this.titleView.el);
             $("#app").append(this.sprintListView.el);
         },

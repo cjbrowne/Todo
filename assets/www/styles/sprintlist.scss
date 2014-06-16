@@ -1,8 +1,9 @@
 @import "colorscheme.scss";
+@import "layout-vars.scss";
 .sprintlist {
     display: block;
     margin: auto;
-    width: 25vw;
+    width: $app-inner-width;
     .sprint {
         h2 {
             background-color: $sprint-header-background;
