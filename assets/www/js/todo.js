@@ -27,7 +27,7 @@ require([
         debug: true,
         detectLngQS: 'lang',
         fallbackLng: 'en',
-        resGetPath: 'js/i18n/__lng__.json'
+        resGetPath: '/js/i18n/__lng__.json'
     }, function () {
         ApplicationRouter = Backbone.ActivityRouter.extend({
             activities: {

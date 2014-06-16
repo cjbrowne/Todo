@@ -342,11 +342,71 @@ define('activities/SprintActivity',[
     return SprintActivity;
 });
 
+define('views/AddTaskView',[
+    'lib/i18n'
+], function (
+    i18n
+) {
+    var TaskView = Backbone.View.extend({
+        tagName: 'li',
+        events: {
+            'change .task-name-input': 'inputChanged',
+            'click .taskDone': 'toggleDone'
+        },
+        initialize: function () {
+            this.render();
+        },
+        render: function () {
+            this.$el.addClass("task");
+            this.$el.html(_.template($('.templates .edittask').html(), {
+                name: this.model.get('name')
+            }));
+        },
+        inputChanged: function () {
+            this.model.set('name', this.$el.find('.task-name-input').val());
+            this.model.save();
+        },
+        toggleDone: function () {
+            var $taskDone = this.$el.find('.taskDone');
+            $taskDone.toggleClass('selected');
+            $taskDone.html(
+                $taskDone.html() == " " ?
+                "&#10004;" :
+                " "
+            );
+        }
+    });
+    return TaskView;
+});
+
 define('activities/TaskActivity',[
-], function () {
+    'views/TitleView',
+    'models/TitleModel',
+    'views/AddTaskView',
+    'models/TaskModel',
+    'lib/i18n'
+], function (
+    TitleView,
+    TitleModel,
+    AddTaskView,
+    TaskModel,
+    i18n
+) {
     var TaskActivity = Backbone.Activity.extend({
         onStart: function (routeParams) {
-
+            this.titleView = new TitleView({
+                model: new TitleModel({
+                    title: i18n.t('task.add')
+                })
+            });
+            this.addTaskView = new AddTaskView({
+                model: new TaskModel()
+            });
+            $("#app").append(this.titleView.el);
+            $("#app").append(this.addTaskView.el);
+        },
+        onStop: function () {
+            this.addTaskView.remove();
         }
     });
     return TaskActivity;
@@ -401,7 +461,7 @@ require([
         debug: true,
         detectLngQS: 'lang',
         fallbackLng: 'en',
-        resGetPath: 'js/i18n/__lng__.json'
+        resGetPath: '/js/i18n/__lng__.json'
     }, function () {
         ApplicationRouter = Backbone.ActivityRouter.extend({
             activities: {
