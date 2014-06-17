@@ -16,7 +16,7 @@
         "new": "New Task",
         "done": "Done",
         "priority": "Priority",
-        "startDate": "Start Date"
+        "startDate": "Due Date"
     },
     "priority": {
         "low": "Low",

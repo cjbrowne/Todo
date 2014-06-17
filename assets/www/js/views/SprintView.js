@@ -9,17 +9,19 @@ define([
 ) {
     var SprintView = Backbone.View.extend({
         tagName: 'li',
+
         events: {
             'click h2': 'toggleSprint',
             'click .addTask': 'doAddTask'
         },
+
         initialize: function () {
             this.taskViews = [];
             this.model.localStorage = new Backbone.LocalStorage('sprint.' + this.model.get('sprint'));
-            this.collection.fetch();
             this.model.fetch();
             this.render();
         },
+
         render: function () {
             this.$el.addClass('sprint');
             // by default, don't show this sprint
@@ -33,13 +35,14 @@ define([
             }
             this.$el.find('.tasks').hide();
             this.collection.each(function (task) {
-                var newTaskView = new TaskView({
-                    model: task
-                });
-                this.taskViews.push(newTaskView);
-                this.$el.find('.tasklist').append(newTaskView.el);
+                 var newTaskView = new TaskView({
+                        model: task
+                    });
+                    this.taskViews.push(newTaskView);
+                    this.$el.find('.tasklist').append(newTaskView.el);
             }, this);
         },
+
         doAddTask: function () {
             var taskModel = new TaskModel({
                 name: i18n.t('task.new')
@@ -51,6 +54,7 @@ define([
             this.taskViews.push(newTaskView);
             this.$el.find('.tasklist').append(newTaskView.el);
         },
+
         toggleSprint: function () {
             this.$el.toggleClass('expanded');
             this.$el.find('.tasks').toggle();

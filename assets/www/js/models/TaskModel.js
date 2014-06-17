@@ -4,7 +4,9 @@ define([
     var TaskModel = Backbone.Model.extend({
         defaults: {
             tags: [],
-            name: ""
+            name: "",
+            startTime: 0,
+            priority: "low"
         }
     });
     return TaskModel;

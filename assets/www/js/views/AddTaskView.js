@@ -40,7 +40,7 @@ define([
             this.collection.create({
                 name: this.$nameEl.val(),
                 done: this.$taskDoneEl.hasClass('selected'),
-                startDate: this.$startDateEl.val(),
+                startTime: Date.parse(this.$startDateEl.val()).getTime(),
                 priority: this.$priorityEl.val()
             });
             Backbone.history.navigate('/sprint');

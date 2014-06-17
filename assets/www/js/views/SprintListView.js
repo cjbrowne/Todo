@@ -26,20 +26,21 @@ define([
                 addTask: i18n.t('task.add')
             }));
             this.$el.addClass("sprintlist");
-            var createSprintView = _.bind(function (sprint, startTime) {
+            var createSprintView = _.bind(function (sprint, startTime, endTime) {
                 var sprintModel, sprintView, taskCollection;
                 sprintModel =
                     (this.collection.findWhere({sprint: sprint})) ||
                     new SprintModel({
                         sprint: sprint,
-                        startTime: startTime
+                        startTime: startTime,
+                        endTime: endTime
                     });
                 taskCollection = new TaskCollection();
                 taskCollection.fetch();
                 if(taskCollection.length > 0) {
                     sprintView = new SprintView({
                         model: sprintModel,
-                        collection: taskCollection
+                        collection: taskCollection.getTasksForSprint(sprintModel)
                     });
                     this.$el.append(sprintView.el);
                     this.sprintViews[sprint] = sprintView;
@@ -54,15 +55,18 @@ define([
                 switch(sprint) {
                     case 'today':
                         startTime = Date.today().getTime();
+                        endTime = Date.parse("tomorrow").getTime();
                         break;
                     case 'tomorrow':
                         startTime = Date.parse("tomorrow").getTime();
+                        endTime = Date.parse("tomorrow").addDays(1).getTime();
                         break;
                     case 'currentWeek':
-                        startTime = Number.POSITIVE_INFINITY;
+                        startTime = Date.today().moveToDayOfWeek(0, -1).getTime();
+                        endTime = Date.today().moveToDayOfWeek(0).getTime();
                         break;
                 }
-                createSprintView(sprint, startTime);
+                createSprintView(sprint, startTime, endTime);
             }, this);
         },
         onAddTaskClick: function () {
