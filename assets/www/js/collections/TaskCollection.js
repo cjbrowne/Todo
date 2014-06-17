@@ -11,7 +11,6 @@ define([
                 sprintEnd = sprintModel.get('endTime'),
                 sprintTasks = this.filter(function (task) {
                     var taskStart = task.get('startTime');
-                    console.log('sprint start:', new Date(sprintStart).toLocaleDateString(), 'task:', new Date(taskStart).toLocaleDateString(), 'sprint end:', new Date(sprintEnd).toLocaleDateString());
                     return taskStart >= sprintStart &&
                         taskStart < sprintEnd;
                 });

@@ -23,8 +23,6 @@ define([
             this.sprintListView = new SprintListView({
                 collection: new SprintCollection()
             });
-            $("#app").append(this.titleView.el);
-            $("#app").append(this.sprintListView.el);
         },
         onStart: function (routeParams) {
             this.titleView.render();

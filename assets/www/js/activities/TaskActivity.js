@@ -12,21 +12,24 @@ define([
     i18n
 ) {
     var TaskActivity = Backbone.Activity.extend({
-        onStart: function (routeParams) {
-            var taskCollection = new TaskCollection();
-            taskCollection.fetch();
+        onCreate: function () {
             this.titleView = new TitleView({
                 model: new TitleModel({
                     title: i18n.t('task.add')
                 })
             });
             this.addTaskView = new AddTaskView({
-                collection: taskCollection
+                collection: new TaskCollection()
             });
+        },
+        onStart: function (routeParams) {
+            this.titleView.render();
+            this.addTaskView.render();
             $("#app").append(this.titleView.el);
             $("#app").append(this.addTaskView.el);
         },
         onStop: function () {
+            this.titleView.remove();
             this.addTaskView.remove();
         }
     });

@@ -14,6 +14,7 @@ define([
         },
         render: function () {
             this.$el.addClass("task");
+            this.$el.addClass("priority-" + this.model.get('priority'));
             this.$el.html(_.template($('.templates .task').html(), {
                 name: this.model.get('name')
             }));
