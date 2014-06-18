@@ -27,7 +27,7 @@ define([
             }));
             this.$el.addClass("sprintlist");
             var createSprintView = _.bind(function (sprint, startTime, endTime) {
-                var sprintModel, sprintView, taskCollection;
+                var sprintModel, sprintView, taskCollection, sprintTasks;
                 sprintModel =
                     (this.collection.findWhere({sprint: sprint})) ||
                     new SprintModel({
@@ -37,10 +37,11 @@ define([
                     });
                 taskCollection = new TaskCollection();
                 taskCollection.fetch();
-                if(taskCollection.length > 0) {
+                sprintTasks = taskCollection.getTasksForSprint(sprintModel);
+                if(sprintTasks.length > 0) {
                     sprintView = new SprintView({
                         model: sprintModel,
-                        collection: taskCollection.getTasksForSprint(sprintModel)
+                        collection: sprintTasks
                     });
                     this.$el.append(sprintView.el);
                     this.sprintViews[sprint] = sprintView;
