@@ -58,8 +58,9 @@
     color: $add-task-foreground;
     border: none;
     display: block;
-    margin: 0 auto;
     padding: 0.5em 1.5em;
+    margin-bottom: 0.5em;
+    float: right;
     font-size: 16pt;
     outline:none;
     &:hover,

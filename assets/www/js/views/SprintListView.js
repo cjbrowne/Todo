@@ -69,6 +69,7 @@ define([
                 }
                 createSprintView(sprint, startTime, endTime);
             }, this);
+            this.delegateEvents();
         },
         onAddTaskClick: function () {
             Backbone.history.navigate('/task/new', {trigger: true});

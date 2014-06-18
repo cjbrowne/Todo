@@ -1,17 +1,23 @@
 @import "reset.css";
 @import "colorscheme.scss";
 
+body {
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
 #app {
     width:100vw;
     min-height:100vh;
     background-color: $body-background;
+    overflow: hidden;
 }
+
 .title {
     margin: auto;
-    width: 12em;
     text-align:center;
     height: 1em;
-    padding-top: 3em;
+    padding: 1em;
     font-size: 24pt;
     font-family: sans-serif;
     color: $title-color;
