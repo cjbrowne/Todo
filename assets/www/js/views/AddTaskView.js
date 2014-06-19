@@ -7,7 +7,7 @@ define([
         tagName: 'form',
         events: {
             'click .taskDone' : 'toggleDone',
-            'click .addTask'  : 'addTask'
+            'click .submitAddTaskForm'  : 'addTask'
         },
         render: function () {
             this.$el.addClass("new-task");

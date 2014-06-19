@@ -15,6 +15,9 @@ define([
         render: function () {
             this.$el.addClass("task");
             this.$el.addClass("priority-" + this.model.get('priority'));
+            if(this.model.get('done')) {
+                this.$el.find('.taskDone').addClass('selected');
+            }
             this.$el.html(_.template($('.templates .task').html(), {
                 name: this.model.get('name')
             }));
@@ -26,11 +29,7 @@ define([
         toggleDone: function () {
             var $taskDone = this.$el.find('.taskDone');
             $taskDone.toggleClass('selected');
-            $taskDone.html(
-                $taskDone.html() == " " ?
-                "&#10004;" :
-                " "
-            );
+            this.model.set('done', $taskDone.hasClass('selected'));
         }
     });
     return TaskView;

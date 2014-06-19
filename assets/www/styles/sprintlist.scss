@@ -32,6 +32,13 @@
                 &.priority-low {
                     background-color: #693;
                 }
+                .taskDone {
+                    &.selected {
+                        &:before {
+                            content: "\2714";
+                        }
+                    }
+                }
             }
         }
         text-align: left;
