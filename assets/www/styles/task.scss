@@ -70,6 +70,14 @@
         cursor: pointer;
     }
 }
+.submitAddTaskForm {
+    background-color: $add-task-background;
+    color: $add-task-foreground;
+    border: none;
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em;
+}
 label {
     flex: 2 1 auto;
     align-self: auto;
