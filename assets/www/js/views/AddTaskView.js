@@ -28,6 +28,7 @@ define([
             this.$taskDoneEl = this.$el.find('.taskDone');
             this.$priorityEl = this.$el.find('select.priority');
             this.$startDateEl = this.$el.find('.date-picker');
+            this.delegateEvents();
         },
         addTask: function () {
             var startDate = this.$el.find('.date-picker').val();

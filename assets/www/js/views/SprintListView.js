@@ -18,12 +18,11 @@ define([
         initialize: function () {
             this.sprintViews = {};
             this.collection.fetch();
-            this.render();
         },
         render: function () {
             var tmpl = $('.templates .sprintlist').html();
             this.$el.html(_.template(tmpl, {
-                addTask: i18n.t('task.add')
+                addTask: '+'
             }));
             this.$el.addClass("sprintlist");
             var createSprintView = _.bind(function (sprint, startTime, endTime) {
@@ -69,7 +68,14 @@ define([
                 }
                 createSprintView(sprint, startTime, endTime);
             }, this);
+            this.makeAddTaskSquare();
             this.delegateEvents();
+        },
+        makeAddTaskSquare: function () {
+            _.defer(_.bind(function () {
+                var $addTaskButton = this.$addTaskButton || (this.$addTaskButton = this.$el.find('.addTask'));
+                $addTaskButton.width($addTaskButton.height());
+            }, this));
         },
         onAddTaskClick: function () {
             Backbone.history.navigate('/task/new', {trigger: true});
