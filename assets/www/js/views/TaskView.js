@@ -30,6 +30,7 @@ define([
             var $taskDone = this.$el.find('.taskDone');
             $taskDone.toggleClass('selected');
             this.model.set('done', $taskDone.hasClass('selected'));
+            this.model.save();
         }
     });
     return TaskView;
