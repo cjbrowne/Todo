@@ -27,7 +27,7 @@ define([
             // by default, don't show this sprint
             this.$el.html(_.template($('.templates .sprint').html(), {
                 sprintTitle: i18n.t('sprintNames.' + this.model.get('sprint')),
-                startDate: new Date(this.model.get('startTime')).toLocaleDateString(),
+                startDate: new Date(this.model.get('startTime')).toLocaleDateString(i18n.lng()),
                 addTask: i18n.t('task.add')
             }));
             if(this.model.get('startTime') === null) {
