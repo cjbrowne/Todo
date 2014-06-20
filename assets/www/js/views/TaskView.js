@@ -15,12 +15,12 @@ define([
         render: function () {
             this.$el.addClass("task");
             this.$el.addClass("priority-" + this.model.get('priority'));
-            if(this.model.get('done')) {
-                this.$el.find('.taskDone').addClass('selected');
-            }
             this.$el.html(_.template($('.templates .task').html(), {
                 name: this.model.get('name')
             }));
+            if(this.model.get('done')) {
+                this.$el.find('.taskDone').addClass('selected');
+            }
         },
         inputChanged: function () {
             this.model.set('name', this.$el.find('.task-name-input').val());
