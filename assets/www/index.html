@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1" />
-        <link rel="stylesheet" type="text/css" href="/styles/compiled.css">
+        <link rel="stylesheet" type="text/css" href="/styles/compiled.css" />
         <title>Todo</title>
     </head>
     <body>
@@ -53,7 +53,13 @@
                     <label for="startDate" class="startdate-label">
                         ${startDate.label}
                     </label>
-                    <input type="date" class="date-picker" />
+                    <input type="date" class="date-picker" name="startDate" />
+                </div>
+                <div role="group" class="form-line">
+                    <label for="tags" class="tag-label">
+                        ${tag.label}
+                    </label>
+                    <input type="text" class="tags" value="foo,bar" />
                 </div>
                 <div role="group" class="form-line">
                     <button class="submitAddTaskForm" type="button">
@@ -67,6 +73,7 @@
         <script type="text/javascript" src="/js/lib/savannah.js"></script>
         <script type="text/javascript" src="/js/lib/lodash.js"></script>
         <script type="text/javascript" src="/js/lib/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="/js/lib/jquery.tagsinput.js"></script>
         <script type="text/javascript" src="/js/lib/backbone.js"></script>
         <script type="text/javascript" src="/js/lib/backbone.activities.js"></script>
         <script type="text/javascript" src="/js/lib/backbone.localStorage.js"></script>

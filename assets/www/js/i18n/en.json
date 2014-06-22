@@ -22,5 +22,8 @@
         "low": "Low",
         "medium": "Medium",
         "high": "High"
+    },
+    "tag": {
+        "new": "Tags"
     }
 }

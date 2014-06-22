@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     watch = require('gulp-watch'),
     rjs = require('gulp-requirejs'),
+    addsrc = require('gulp-add-src'),
     nodemon = require('gulp-nodemon');
 
 gulp.task('server', function () {

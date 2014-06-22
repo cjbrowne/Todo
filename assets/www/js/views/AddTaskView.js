@@ -22,6 +22,9 @@ define([
                 startDate: {
                     label: i18n.t('task.startDate')
                 },
+                tag: {
+                    label: i18n.t('tag.new')
+                },
                 addTask: i18n.t('task.add')
             }));
             this.$nameEl = this.$el.find('.task-name-input');
@@ -29,6 +32,11 @@ define([
             this.$priorityEl = this.$el.find('select.priority');
             this.$startDateEl = this.$el.find('.date-picker');
             this.delegateEvents();
+            // this is kinda hacky and not x-browser
+            this.$el.find('.tags')[0].addEventListener('DOMNodeInsertedIntoDocument', _.bind(this.setupTags, this));
+        },
+        setupTags: function () {
+            this.$el.find('.tags').tagsInput();
         },
         addTask: function () {
             var startDate = this.$el.find('.date-picker').val();
